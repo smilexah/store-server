@@ -7,6 +7,7 @@ The project for study Django.
 - [Python](https://www.python.org/downloads/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Redis](https://redis.io/)
+- [Celery](https://docs.celeryq.dev/en/stable/)
 
 ## Local Developing
    
@@ -25,4 +26,8 @@ The project for study Django.
 3. Run Celery:
    ```bash
    celery -A store worker --loglevel=INFO
+   ```
+   or
+   ```bash
+   celery -A store worker --loglevel=DEBUG --pool=solo
    ```
