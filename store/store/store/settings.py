@@ -190,6 +190,11 @@ SITE_ID = 1
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
+        'APP': {
+            'client_id': 'Ov23liUfaQW5U94ec02n',
+            'secret': '74147e7063ae2b44d149dd2679fe45adae60aa9f',
+            'key': ''
+        },
         'SCOPE': [
             'user',
             # 'repo',
@@ -197,6 +202,7 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
     },
 }
+
 
 # 74147e7063ae2b44d149dd2679fe45adae60aa9f
 
@@ -221,3 +227,9 @@ CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+
+# Stripe
+
+STRIPE_PUBLIC_KEY = 'pk_test_51Qzoc9FY6EBlROhp78zvFropuTjjQqtyelEU4WiZcuf4wmftbxdDRAiO4gdhLyTzBgrpeemWGtrpJLuyGmSZZ8K2001sV9FKgP'
+STRIPE_SECRET_KEY = 'sk_test_51Qzoc9FY6EBlROhp2zt2hAtkHEdjYM2ejKKtBaYQjXvOzWNdx3CahDqN3nOgvyBygk9B0nbMHHKPqmPOO1JVH5iA001QQM6TSR'
+STRIPE_WEBHOOK_SECRET = 'whsec_d2bcb41c80cc6436a4949308a29fe7eede19c1c0657d59d825c4729819132a0c'
