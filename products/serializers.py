@@ -4,7 +4,21 @@ from products.models import Basket, Product, ProductCategory
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = serializers.SlugRelatedField(slug_field='name', queryset=ProductCategory.objects.all())
+    category = serializers.SlugRelatedField(
+        slug_field='name',
+        queryset=ProductCategory.objects.all(),
+        required=False
+    )
+
+    name = serializers.CharField(required=False, allow_blank=True)
+    description = serializers.CharField(required=False, allow_blank=True)
+    price = serializers.DecimalField(
+        required=False,
+        max_digits=10,
+        decimal_places=2,
+        allow_null=True
+    )
+    quantity = serializers.IntegerField(required=False)  # Optional quantity
 
     class Meta:
         model = Product
