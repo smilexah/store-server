@@ -139,11 +139,11 @@ WSGI_APPLICATION = 'store.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': env('DATABASE_HOST'),
-        'PORT': env('DATABASE_PORT'),
+        'NAME': env('DATABASE_NAME', default='store_db'),
+        'USER': env('DATABASE_USER', default='postgres'),
+        'PASSWORD': env('DATABASE_PASSWORD', default='0000'),
+        'HOST': env('DATABASE_HOST', default='store_db'),
+        'PORT': env('DATABASE_PORT', default=5432),
     }
 }
 
@@ -248,8 +248,10 @@ INTERNAL_IPS = [
     'localhost',
 ]
 
-REDIS_HOST = env('REDIS_HOST')
-REDIS_PORT = env('REDIS_PORT')
+REDIS_HOST = env('REDIS_HOST', default='redis')
+REDIS_PORT = env('REDIS_PORT', default='6379')
+
+# ; REDIS_HOST=127.0.0.1
 
 CACHES = {
     'default': {
@@ -263,8 +265,8 @@ CACHES = {
 
 # Celery
 
-CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}'
-CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}'
+CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 
