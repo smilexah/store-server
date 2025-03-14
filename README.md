@@ -9,6 +9,10 @@ The project for study Django.
 - [Redis](https://redis.io/)
 - [Celery](https://docs.celeryq.dev/en/stable/)
 
+1. ```
+   python.exe -m pip install --upgrade pip
+   ```
+
 ## Local Developing
    
 1. Run project dependencies, migrations, fill the database with the fixture data etc.:

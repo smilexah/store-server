@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the project requirements
-COPY requirements.txt .
+COPY store/store/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Django project files
