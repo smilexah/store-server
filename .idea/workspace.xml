@@ -4,192 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b9b76a2-48d9-4f34-8425-1112a7b072fa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/store-server.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/orders/order-create.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/orders/order.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/orders/orders.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/orders/success.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/products.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/users/email_verification.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/users/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/users/profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/users/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/css/auth.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/css/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/css/orders.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/css/products.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/css/profile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/fontawesome/fontawesome-icons.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/products/Adidas-hoodie.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/products/Black-Dr-Martens-shoes.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/products/Black-Nike-Heritage-backpack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/products/Blue-jacket-The-North-Face.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/products/Brown-sports-oversized-top-ASOS-DESIGN.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/products/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/slides/slide-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/slides/slide-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/slides/slide-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/users/default_avatar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/img/wallpaper.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/jquery/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/jquery/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/jquery/jquery.min.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/jquery/jquery.slim.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/jquery/jquery.slim.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/jquery/jquery.slim.min.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/js/auth-admin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store-template/vendor/js/datatable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/.idea/store.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/.flake8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/.idea/store.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/common/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/media/products_images/Adidas-hoodie.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/media/products_images/Black-Dr-Martens-shoes.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/media/products_images/Black-Nike-Heritage-backpack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/media/products_images/Blue-jacket-The-North-Face.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/media/products_images/Brown-sports-oversized-top-ASOS-DESIGN.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/media/products_images/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/media/users_image/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/media/users_image/siu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/media/users_image/siu_1VhaZ8D.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/migrations/0002_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/templates/orders/canceled.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/templates/orders/order-create.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/templates/orders/order.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/templates/orders/orders.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/templates/orders/success.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/orders/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/context_processors.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/fixtures/categories.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/fixtures/goods.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/migrations/0002_alter_basket_options_alter_product_options_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/templates/products/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/templates/products/baskets.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/templates/products/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/templates/products/products.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/products/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/css/auth.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/css/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/css/orders.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/css/products.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/css/profile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/fontawesome/fontawesome-icons.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/img/slides/slide-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/img/slides/slide-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/img/slides/slide-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/img/users/default_avatar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/img/wallpaper.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/jquery/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/jquery/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/jquery/jquery.min.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/jquery/jquery.slim.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/jquery/jquery.slim.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/jquery/jquery.slim.min.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/js/auth-admin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/static/vendor/js/datatable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/store/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/store/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/store/celery.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/store/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/store/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/store/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/tasks.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/templates/users/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/templates/users/email_verification.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/templates/users/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/templates/users/profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/templates/users/registration.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store/users/views.py" beforeDir="false" />
+    <list default="true" id="3b9b76a2-48d9-4f34-8425-1112a7b072fa" name="Changes" comment="some fix">
+      <change afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/products/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/vendor/img/default-product.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/templates/products/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/templates/products/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,6 +20,13 @@
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -230,7 +59,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/Django/store",
+    "last_opened_file_path": "D:/Django/store/media",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -240,6 +69,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Django\store\media" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Django\store\static\vendor\img" />
+      <recent name="D:\Django\store\public" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="store" type="Python.DjangoServer" factoryName="Django server">
       <module name="store" />
@@ -283,11 +121,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741903164324</updated>
-      <workItem from="1741903165425" duration="4472000" />
+      <workItem from="1741903165425" duration="9454000" />
     </task>
+    <task id="LOCAL-00001" summary="some fix">
+      <option name="closed" value="true" />
+      <created>1741911559578</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1741911559578</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="some fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="some fix" />
   </component>
 </project>
