@@ -142,7 +142,7 @@ DATABASES = {
         'NAME': env('DATABASE_NAME', default='store_db'),
         'USER': env('DATABASE_USER', default='postgres'),
         'PASSWORD': env('DATABASE_PASSWORD', default='0000'),
-        'HOST': env('DATABASE_HOST', default='store_db'),
+        'HOST': env('DATABASE_HOST', default='localhost'),
         'PORT': env('DATABASE_PORT', default=5432),
     }
 }
@@ -223,16 +223,12 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+# SITE_ID = 2
 SITE_ID = 1
 
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
-        'APP': {
-            'client_id': 'Ov23liUfaQW5U94ec02n',
-            'secret': '74147e7063ae2b44d149dd2679fe45adae60aa9f',
-            'key': ''
-        },
         'SCOPE': [
             'user',
             # 'repo',

@@ -11,7 +11,10 @@ WORKDIR /app
 COPY . /app/
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y netcat-openbsd gcc
+RUN apt-get update && apt-get install -y netcat-openbsd gcc curl
+
+# Install dockerize
+RUN curl -sSL https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz | tar -xzv -C /usr/local/bin
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
@@ -19,5 +22,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Expose port 8000
 EXPOSE 8000
 
-# Run migrations, collectstatic, and start the server
-CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"]
+# Run migrations, collectstatic, and start the server, ensuring the database is ready
+CMD ["sh", "-c", "dockerize -wait tcp://db:5432 -timeout 20s python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"]

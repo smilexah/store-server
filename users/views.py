@@ -33,6 +33,10 @@ class UserProfileView(TitleMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('users:profile', args=(self.object.id,))
 
+    def form_valid(self, form):
+        form.instance.image = self.request.FILES.get('image', form.instance.image)
+        return super().form_valid(form)
+
 
 class EmailVerificationView(TitleMixin, TemplateView):
     title = 'Store - Подтверждение электронной почты'
