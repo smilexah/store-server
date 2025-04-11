@@ -2,6 +2,7 @@ from http import HTTPStatus
 
 import stripe
 from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
@@ -27,7 +28,7 @@ class CanceledTemplateView(TemplateView):
     template_name = 'orders/canceled.html'
 
 
-class OrderListView(TitleMixin, ListView):
+class OrderListView(LoginRequiredMixin, TitleMixin, ListView):
     template_name = 'orders/orders.html'
     title = 'Store - Заказы'
     queryset = Order.objects.all()
@@ -38,7 +39,7 @@ class OrderListView(TitleMixin, ListView):
         return queryset.filter(initiator=self.request.user)
 
 
-class OrderDetailView(DetailView):
+class OrderDetailView(LoginRequiredMixin, DetailView):
     template_name = 'orders/order.html'
     model = Order
 
@@ -48,7 +49,7 @@ class OrderDetailView(DetailView):
         return context
 
 
-class OrderCreateView(TitleMixin, CreateView):
+class OrderCreateView(LoginRequiredMixin, TitleMixin, CreateView):
     template_name = 'orders/order-create.html'
     form_class = OrderForm
     success_url = reverse_lazy('orders:order_create')

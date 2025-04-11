@@ -37,6 +37,12 @@ env = environ.Env(
     STRIPE_PUBLIC_KEY=str,
     STRIPE_SECRET_KEY=str,
     STRIPE_WEBHOOK_SECRET=str,
+
+    MINIO_ACCESS_KEY=str,
+    MINIO_SECRET_KEY=str,
+    MINIO_BUCKET_NAME=str,
+
+    ALLOWED_HOSTS=str,
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -54,7 +60,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='*').split(',')
 
 DOMAIN_NAME = env('DOMAIN_NAME')
 
@@ -79,6 +85,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
 
     'debug_toolbar',
+    'storages',
 
     'products',
     'orders',
@@ -179,16 +186,54 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-if DEBUG:
-    STATICFILES_DIRS = (
-        BASE_DIR / 'static',
-    )
-else:
-    STATIC_ROOT = BASE_DIR / 'static'
+# Static files
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR / 'static'
+#
+# if DEBUG:
+#     STATICFILES_DIRS = [
+#         BASE_DIR / 'static_src',
+#     ]
+#
+#     MEDIA_URL = '/media/'
+#     MEDIA_ROOT = BASE_DIR / 'media'
+# else:
+#     AWS_ACCESS_KEY_ID = env('MINIO_ACCESS_KEY')
+#     AWS_SECRET_ACCESS_KEY = env('MINIO_SECRET_KEY')
+#     AWS_STORAGE_BUCKET_NAME = env('MINIO_BUCKET_NAME')
+#     AWS_S3_ENDPOINT_URL = 'http://minio:9000'
+#
+#     AWS_S3_FILE_OVERWRITE = False
+#     AWS_S3_ADDRESSING_STYLE = "path"
+#     AWS_QUERYSTRING_AUTH = False
+#
+#     DEFAULT_FILE_STORAGE = 'users.storage_backends.MediaStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # <-- Здесь лежит vendor/, css/, js/ и т.д.
+]
+
+if DEBUG:
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
+else:
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+    # Media-файлы в MinIO
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+    AWS_ACCESS_KEY_ID = os.environ.get('MINIO_ACCESS_KEY', 'minio')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('MINIO_SECRET_KEY', 'minio123')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('MINIO_BUCKET', 'media')
+    AWS_S3_ENDPOINT_URL = os.environ.get('MINIO_ENDPOINT', 'http://minio:9000')
+    AWS_S3_REGION_NAME = 'us-east-1'
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_QUERYSTRING_AUTH = False  # Чтобы ссылки были без query-параметров
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -283,4 +328,31 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.IsAuthenticated',
     # ],
+}
+
+# Security settings for production
+SECURE_SSL_REDIRECT = False
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+SECURE_HSTS_SECONDS = 31536000  # One year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+# SESSION_COOKIE_SECURE = not DEBUG  # Если у вас HTTPS, поставьте True в продакшне
+# CSRF_COOKIE_SECURE = not DEBUG  # Если у вас HTTPS, поставьте True в продакшне
+
+# Логирование (минимальный пример; дорабатывайте под себя)
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
 }

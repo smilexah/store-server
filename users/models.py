@@ -5,9 +5,16 @@ from django.db import models
 from django.urls import reverse
 from django.utils.timezone import now
 
+from users.storage_backends import MediaStorage
+
 
 class User(AbstractUser):
-    image = models.ImageField(upload_to='users_image', null=True, blank=True)
+    image = models.ImageField(
+        upload_to='users_image/',
+        storage=MediaStorage() if MediaStorage else None,
+        null=True,
+        blank=True
+    )
     is_verified_email = models.BooleanField(default=False)
 
     def __str__(self):
