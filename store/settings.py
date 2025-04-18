@@ -13,24 +13,27 @@ import os
 from pathlib import Path
 
 import environ
-
 env = environ.Env(
     DEBUG=bool,
     SECRET_KEY=str,
-    DOMAIN_NAME=str,
 
     REDIS_HOST=str,
     REDIS_PORT=str,
 
+    DATABASE_ENGINE=str,
     DATABASE_NAME=str,
     DATABASE_USER=str,
     DATABASE_PASSWORD=str,
     DATABASE_HOST=str,
     DATABASE_PORT=str,
 
+    POSTGRES_DB=str,
+    POSTGRES_USER=str,
+    POSTGRES_PASSWORD=str,
+
     EMAIL_HOST=str,
     EMAIL_PORT=str,
-    EMAIL_USE_SSL=bool,
+    EMAIL_USE_SSL=str,
     EMAIL_HOST_USER=str,
     EMAIL_HOST_PASSWORD=str,
 
@@ -41,8 +44,11 @@ env = environ.Env(
     MINIO_ACCESS_KEY=str,
     MINIO_SECRET_KEY=str,
     MINIO_BUCKET_NAME=str,
+    MINIO_ROOT_USER=str,
+    MINIO_ROOT_PASSWORD=str,
 
     ALLOWED_HOSTS=str,
+    DJANGO_CSRF_TRUSTED_ORIGINS=str,
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -52,7 +58,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # Take environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+environ.Env.read_env(os.path.join(BASE_DIR, '.env.prod'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
@@ -60,7 +66,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='*').split(',')
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS","127.0.0.1").split(",")
+CSRF_TRUSTED_ORIGINS = os.getenv("DJANGO_CSRF_TRUSTED_ORIGINS","http://127.0.0.1").split(",")
 
 DOMAIN_NAME = env('DOMAIN_NAME')
 
@@ -145,7 +152,9 @@ WSGI_APPLICATION = 'store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.{}'.format(
+            os.getenv('DATABASE_ENGINE', 'sqlite3')
+        ),
         'NAME': env('DATABASE_NAME', default='store_db'),
         'USER': env('DATABASE_USER', default='postgres'),
         'PASSWORD': env('DATABASE_PASSWORD', default='0000'),
@@ -209,31 +218,27 @@ USE_TZ = True
 #
 #     DEFAULT_FILE_STORAGE = 'users.storage_backends.MediaStorage'
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # <-- Здесь лежит vendor/, css/, js/ и т.д.
-]
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static',  # <-- Здесь лежит vendor/, css/, js/ и т.д.
+# ]
 
 if DEBUG:
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
     MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
 else:
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
-    # Media-файлы в MinIO
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     AWS_ACCESS_KEY_ID = os.environ.get('MINIO_ACCESS_KEY', 'minio')
     AWS_SECRET_ACCESS_KEY = os.environ.get('MINIO_SECRET_KEY', 'minio123')
     AWS_STORAGE_BUCKET_NAME = os.environ.get('MINIO_BUCKET', 'media')
-    AWS_S3_ENDPOINT_URL = os.environ.get('MINIO_ENDPOINT', 'http://minio:9000')
+    AWS_S3_ENDPOINT_URL = os.environ.get('MINIO_ENDPOINT', 'http://localhost:9001')
     AWS_S3_REGION_NAME = 'us-east-1'
     AWS_S3_SIGNATURE_VERSION = 's3v4'
-    AWS_QUERYSTRING_AUTH = False  # Чтобы ссылки были без query-параметров
+    AWS_QUERYSTRING_AUTH = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

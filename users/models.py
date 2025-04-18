@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.db import models
 from django.urls import reverse
 from django.utils.timezone import now
+from urllib.parse import urlparse
 
 from users.storage_backends import MediaStorage
 
@@ -16,6 +17,10 @@ class User(AbstractUser):
         blank=True
     )
     is_verified_email = models.BooleanField(default=False)
+
+    @property
+    def image_path(self):
+        return urlparse(self.image.url).path
 
     def __str__(self):
         return self.username

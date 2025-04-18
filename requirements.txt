@@ -16,6 +16,7 @@ flake8==5.0.4
 isort==5.10.1
 
 stripe==4.1.0
+importlib-metadata==4.13.0
 
 redis==4.5.4
 celery==5.2.7

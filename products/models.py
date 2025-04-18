@@ -1,8 +1,10 @@
 import stripe
 from django.conf import settings
 from django.db import models
+from urllib.parse import urlparse
 
 from users.models import User
+from users.storage_backends import MediaStorage
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -24,13 +26,17 @@ class Product(models.Model):
     description = models.TextField(default='')
     price = models.DecimalField(max_digits=8, decimal_places=2)
     quantity = models.PositiveIntegerField(default=0)
-    image = models.ImageField(upload_to='products_images', null=True, blank=True)
+    image = models.ImageField(upload_to='products_images', storage=MediaStorage() if MediaStorage else None, null=True, blank=True)
     stripe_product_price_id = models.CharField(max_length=128, null=True, blank=True)
     category = models.ForeignKey(to=ProductCategory, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'product'
         verbose_name_plural = 'products'
+
+    @property
+    def image_path(self):
+        return urlparse(self.image.url).path
 
     def __str__(self):
         return f'Продукт: {self.name} | Категория: {self.category.name}'
