@@ -1,12 +1,10 @@
-version: '3.8'
-
 services:
   web:
     build: .
     container_name: django
     volumes:
-#      - .:/app
       - ./static:/app/staticfiles
+      - ./media:/app/media
     depends_on:
       - db
       - redis
@@ -76,6 +74,32 @@ services:
     networks:
       - app_network
 
+  createbuckets:
+    image: minio/mc
+    container_name: createbuckets
+    depends_on:
+      - minio
+    restart: on-failure
+    entrypoint: >
+      /bin/sh -c "
+      # ensure MinIO is fully ready before setting up buckets
+      sleep 15;
+      /usr/bin/mc alias set --api S3v4 myminio http://minio:9000 $${MINIO_ROOT_USER} $${MINIO_ROOT_PASSWORD};
+      /usr/bin/mc mb myminio/$${MINIO_BUCKET_NAME} --ignore-existing;
+      # Set the bucket policy to download (read) for anonymous users
+      /usr/bin/mc policy set download myminio/$${MINIO_BUCKET_NAME};
+      # Also create a specific policy for the media prefix to ensure it's publicly accessible
+      echo '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":[\"*\"]},\"Action\":[\"s3:GetObject\"],\"Resource\":[\"arn:aws:s3:::$${MINIO_BUCKET_NAME}/media/*\"]}]}' > /tmp/policy.json;
+      /usr/bin/mc policy set-json /tmp/policy.json myminio/$${MINIO_BUCKET_NAME};
+      # Test access by listing the bucket
+      /usr/bin/mc ls myminio/$${MINIO_BUCKET_NAME};
+      exit 0;
+      "
+    env_file:
+      - .env.prod
+    networks:
+      - app_network
+
   nginx:
     image: nginx:alpine
     container_name: nginx
@@ -83,9 +107,11 @@ services:
       - "8001:80"
     depends_on:
       - web
+      - minio
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./static:/static:ro
+      - ./media:/media:ro  # serve uploaded media from local folder for dev
     networks:
       - app_network
 
