@@ -80,13 +80,15 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.humanize",
     "django_extensions",
+    'debug_toolbar',
+    'rest_framework_simplejwt',
+    'drf_spectacular',
     "rest_framework",
     "rest_framework.authtoken",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.github",
-    "debug_toolbar",
     "storages",
     "products",
     "orders",
@@ -194,8 +196,8 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 if DEBUG:
     DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
-    MEDIA_URL = "/media/"
-    MEDIA_ROOT = BASE_DIR / "media"
+    MEDIA_URL = "/tore-bucket12/"
+    MEDIA_ROOT = BASE_DIR / "tore-bucket12"
     STATICFILES_DIRS = [BASE_DIR / "static"]
 else:
     # MinIO settings
@@ -219,7 +221,7 @@ else:
     )  # e.g. 'localhost:9000'
     # Media
     DEFAULT_FILE_STORAGE = "users.storage_backends.MediaStorage"
-    MEDIA_URL = "/media/"  # storage.url() will generate full MinIO URLs
+    MEDIA_URL = "/store-bucket12/"  # storage.url() will generate full MinIO URLs
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -309,14 +311,78 @@ SOCIAL_GITHUB_SECRET = env("SOCIAL_GITHUB_SECRET", default="")
 # REST Framework
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 3,
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.TokenAuthentication",
-    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+    # "DEFAULT_AUTHENTICATION_CLASSES": [
+    #     "rest_framework.authentication.TokenAuthentication",
+    # ],
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.IsAuthenticated',
     # ],
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Store Server Api',
+    'DESCRIPTION': 'Complete API documentation for Store Server',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'COMPONENT_SPLIT_REQUEST': True,
+    'SCHEMA_PATH_PREFIX': '/api/',
+
+    # Available Swagger UI configuration: https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration/
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+        'persistAuthorization': True,
+        'displayOperationId': True,
+    },
+
+    'PREPROCESSING_HOOKS': [
+        'drf_spectacular.hooks.preprocess_exclude_path_format'
+    ],
+
+    # OAuth2 configuration
+    'OAUTH2_FLOWS': [],
+    'OAUTH2_AUTHORIZATION_URL': None,
+    'OAUTH2_TOKEN_URL': None,
+
+    # Customize operation IDs
+    'OPERATION_ID_GENERATOR': 'drf_spectacular.generators.operation_id_smart',
+
+    # Add custom tags
+    'TAGS': [
+        {'name': 'products', 'description': 'Everything about products'},
+        {'name': 'orders', 'description': 'Order processing endpoints'},
+    ],
+}
+
+from datetime import timedelta
+
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+#     'ROTATE_REFRESH_TOKENS': True,
+#     'BLACKLIST_AFTER_ROTATION': True,
+#     'UPDATE_LAST_LOGIN': True,
+#
+#     'ALGORITHM': 'HS256',
+#     'SIGNING_KEY': SECRET_KEY,
+#     'VERIFYING_KEY': None,
+#
+#     'AUTH_HEADER_TYPES': ('Bearer',),
+#     'USER_ID_FIELD': 'id',
+#     'USER_ID_CLAIM': 'user_id',
+# }
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'SLIDING_TOKEN_LIFETIME': timedelta(days=30),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
 
 # Security settings for production

@@ -36,21 +36,24 @@ class Product(models.Model):
 
     @property
     def image_path(self):
-        return urlparse(self.image.url).path
+        return urlparse(self.image.url).path if self.image else None
 
     def __str__(self):
         return f'Продукт: {self.name} | Категория: {self.category.name}'
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        # Only create a Stripe price if it doesn't already exist
         if not self.stripe_product_price_id:
             stripe_product_price = self.create_stripe_product_price()
             self.stripe_product_price_id = stripe_product_price['id']
-        super(Product, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
+        super().save(force_insert, force_update, using, update_fields)
 
     def create_stripe_product_price(self):
+        # Create the Stripe product and price
         stripe_product = stripe.Product.create(name=self.name)
         stripe_product_price = stripe.Price.create(
-            product=stripe_product['id'], unit_amount=round(self.price * 100), currency='rub')
+            product=stripe_product['id'], unit_amount=round(self.price * 100), currency='rub'
+        )
         return stripe_product_price
 
 
@@ -62,14 +65,13 @@ class BasketQuerySet(models.QuerySet):
         return sum(basket.quantity for basket in self)
 
     def stripe_products(self):
-        line_items = []
-        for basket in self:
-            item = {
+        return [
+            {
                 'price': basket.product.stripe_product_price_id,
                 'quantity': basket.quantity,
             }
-            line_items.append(item)
-        return line_items
+            for basket in self
+        ]
 
 
 class Basket(models.Model):
@@ -87,13 +89,12 @@ class Basket(models.Model):
         return self.product.price * self.quantity
 
     def de_json(self):
-        basket_item = {
+        return {
             'product_name': self.product.name,
             'quantity': self.quantity,
             'price': float(self.product.price),
             'sum': float(self.sum()),
         }
-        return basket_item
 
     @classmethod
     def create_or_update(cls, product_id, user):
@@ -101,11 +102,9 @@ class Basket(models.Model):
 
         if not baskets.exists():
             obj = Basket.objects.create(user=user, product_id=product_id, quantity=1)
-            is_created = True
-            return obj, is_created
+            return obj, True  # Renamed `is_crated` to `is_created`
         else:
             basket = baskets.first()
             basket.quantity += 1
             basket.save()
-            is_crated = False
-            return basket, is_crated
+            return basket, False

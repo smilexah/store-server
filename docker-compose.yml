@@ -83,17 +83,15 @@ services:
     entrypoint: >
       /bin/sh -c "
       # ensure MinIO is fully ready before setting up buckets
-      sleep 15;
+      sleep 30;  # Increase wait time if needed
       /usr/bin/mc alias set --api S3v4 myminio http://minio:9000 $${MINIO_ROOT_USER} $${MINIO_ROOT_PASSWORD};
       /usr/bin/mc mb myminio/$${MINIO_BUCKET_NAME} --ignore-existing;
-      # Set the bucket policy to download (read) for anonymous users
       /usr/bin/mc policy set download myminio/$${MINIO_BUCKET_NAME};
-      # Also create a specific policy for the media prefix to ensure it's publicly accessible
       echo '{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":[\"*\"]},\"Action\":[\"s3:GetObject\"],\"Resource\":[\"arn:aws:s3:::$${MINIO_BUCKET_NAME}/media/*\"]}]}' > /tmp/policy.json;
       /usr/bin/mc policy set-json /tmp/policy.json myminio/$${MINIO_BUCKET_NAME};
-      # Test access by listing the bucket
       /usr/bin/mc ls myminio/$${MINIO_BUCKET_NAME};
-      exit 0;
+      # Keep the container running for inspection
+      tail -f /dev/null;
       "
     env_file:
       - .env.prod
